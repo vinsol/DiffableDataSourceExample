@@ -10,6 +10,11 @@ import UIKit
 
 final class FoodListingViewController: UIViewController {
 
+    private enum Section {
+        case main
+    }
+
+    private var dataSource: UICollectionViewDiffableDataSource<Section, Dish>!
     @IBOutlet weak private var collectionView: UICollectionView!
     let dishes = Dish.dishes
 
@@ -18,13 +23,31 @@ final class FoodListingViewController: UIViewController {
         configureDataSource()
         performQuery(with: nil)
     }
+}
+
+extension FoodListingViewController {
 
     func configureDataSource() {
-        // TODO: Configure Data Source
+        dataSource = UICollectionViewDiffableDataSource(collectionView: collectionView) {
+                (collectionView: UICollectionView, indexPath: IndexPath,
+                dish: Dish) -> UICollectionViewCell? in
+            guard let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: DishCollectionViewCell.identifier, for: indexPath) as? DishCollectionViewCell
+            else { fatalError("Cannot create new cell") }
+            cell.setup(using: dish)
+            return cell
+        }
     }
 
     func performQuery(with filter: String?) {
-        // TODO: Filter the food listing
+        var dishes = self.dishes
+        if let filter = filter, !filter.isEmpty {
+            dishes = self.dishes.filter({ $0.name.contains(filter) }).sorted { $0.name < $1.name }
+        }
+        var snapshot = NSDiffableDataSourceSnapshot<Section, Dish>()
+        snapshot.appendSections([.main])
+        snapshot.appendItems(dishes)
+        dataSource.apply(snapshot, animatingDifferences: true)
     }
 }
 

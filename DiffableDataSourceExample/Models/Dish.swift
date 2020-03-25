@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Dish {
+struct Dish: Hashable {
     let name: String
     let country: String?
     let isVeg: Bool = Bool.random()
