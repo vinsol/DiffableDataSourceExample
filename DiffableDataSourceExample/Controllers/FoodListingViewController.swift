@@ -11,7 +11,8 @@ import UIKit
 final class FoodListingViewController: UIViewController {
 
     private enum Section {
-        case main
+        case veg
+        case nonVeg
     }
 
     private var dataSource: UICollectionViewDiffableDataSource<Section, Dish>!
@@ -37,6 +38,14 @@ extension FoodListingViewController {
             cell.setup(using: dish)
             return cell
         }
+        dataSource.supplementaryViewProvider = { (collectionView: UICollectionView, kind: String, indexPath: IndexPath) -> UICollectionReusableView? in
+            guard kind == UICollectionView.elementKindSectionHeader  else { return nil }
+            let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
+                                                                             withReuseIdentifier: CollectionReusableHeaderView.identifier,
+                                                                             for: indexPath) as? CollectionReusableHeaderView
+            headerView?.titleLabel.text = (indexPath.section == 1) ? "NON-VEG" : "VEG"
+            return headerView
+        }
     }
 
     func performQuery(with filter: String?) {
@@ -45,8 +54,16 @@ extension FoodListingViewController {
             dishes = self.dishes.filter({ $0.name.contains(filter) }).sorted { $0.name < $1.name }
         }
         var snapshot = NSDiffableDataSourceSnapshot<Section, Dish>()
-        snapshot.appendSections([.main])
-        snapshot.appendItems(dishes)
+        let vegDishes = dishes.filter({ $0.isVeg })
+        if !vegDishes.isEmpty {
+            snapshot.appendSections([.veg])
+            snapshot.appendItems(vegDishes, toSection: .veg)
+        }
+        let nonVegDishes = dishes.filter({ !$0.isVeg })
+        if !nonVegDishes.isEmpty {
+            snapshot.appendSections([.nonVeg])
+            snapshot.appendItems(nonVegDishes, toSection: .nonVeg)
+        }
         dataSource.apply(snapshot, animatingDifferences: true)
     }
 }

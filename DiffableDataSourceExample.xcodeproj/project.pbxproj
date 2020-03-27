@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		ABA5E26923E709120022A8EE /* Dish.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA5E26823E709120022A8EE /* Dish.swift */; };
 		ABA5E26B23E71CEF0022A8EE /* DishCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA5E26A23E71CEF0022A8EE /* DishCollectionViewCell.swift */; };
+		ABE31EFC23F17F4100054C0F /* CollectionReusableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE31EFB23F17F4100054C0F /* CollectionReusableHeaderView.swift */; };
 		ABE3E1E023E56C2B0036A83E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE3E1DF23E56C2B0036A83E /* AppDelegate.swift */; };
 		ABE3E1E223E56C2B0036A83E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE3E1E123E56C2B0036A83E /* SceneDelegate.swift */; };
 		ABE3E1E423E56C2B0036A83E /* FoodListingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE3E1E323E56C2B0036A83E /* FoodListingViewController.swift */; };
@@ -20,6 +21,7 @@
 /* Begin PBXFileReference section */
 		ABA5E26823E709120022A8EE /* Dish.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dish.swift; sourceTree = "<group>"; };
 		ABA5E26A23E71CEF0022A8EE /* DishCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishCollectionViewCell.swift; sourceTree = "<group>"; };
+		ABE31EFB23F17F4100054C0F /* CollectionReusableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionReusableHeaderView.swift; sourceTree = "<group>"; };
 		ABE3E1DC23E56C2B0036A83E /* DiffableDataSourceExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DiffableDataSourceExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABE3E1DF23E56C2B0036A83E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ABE3E1E123E56C2B0036A83E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -57,6 +59,14 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
+		ABE31EFA23F17F0100054C0F /* CollectionView Reusable Header */ = {
+			isa = PBXGroup;
+			children = (
+				ABE31EFB23F17F4100054C0F /* CollectionReusableHeaderView.swift */,
+			);
+			path = "CollectionView Reusable Header";
+			sourceTree = "<group>";
+		};
 		ABE3E1D323E56C2A0036A83E = {
 			isa = PBXGroup;
 			children = (
@@ -79,6 +89,7 @@
 				ABE3E1F423E56C600036A83E /* Models */,
 				ABE3E1F323E56C540036A83E /* Supporting Files */,
 				ABA5E26C23E731FF0022A8EE /* CollectionView Cells */,
+				ABE31EFA23F17F0100054C0F /* CollectionView Reusable Header */,
 				ABA5E26D23E7321A0022A8EE /* Controllers */,
 				ABE3E1E523E56C2B0036A83E /* Main.storyboard */,
 				ABE3E1E823E56C2C0036A83E /* Assets.xcassets */,
@@ -176,6 +187,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ABE31EFC23F17F4100054C0F /* CollectionReusableHeaderView.swift in Sources */,
 				ABE3E1E423E56C2B0036A83E /* FoodListingViewController.swift in Sources */,
 				ABA5E26923E709120022A8EE /* Dish.swift in Sources */,
 				ABA5E26B23E71CEF0022A8EE /* DishCollectionViewCell.swift in Sources */,
